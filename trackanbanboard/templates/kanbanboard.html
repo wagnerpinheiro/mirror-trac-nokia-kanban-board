@@ -1,0 +1,81 @@
+<div class="$css_class"
+     xmlns:py="http://genshi.edgewall.org/"
+     xmlns:xi="http://www.w3.org/2001/XInclude">
+    <div class="board-container" style="height: $height;">
+        <div class="toolbar">
+            <button data-bind="click: $$root.showQueryDialog, enable: IS_EDITABLE">Add tickets</button>
+            <button data-bind="click: $$root.createTicket, enable: IS_EDITABLE">New ticket</button>
+            <button data-bind="click: $$root.fetchData" class="float-right">Refresh</button>
+        </div>
+        <ul class="kanban-column-container" data-bind="foreach: columns">
+            <li class="kanban-column" data-bind="style: {width: $$root.columnWidth()}">
+                <div class="column-header">
+                    <span data-bind="text: name">name</span>
+                    <span>&ndash;</span>
+                    <span data-bind="text: tickets().length + '/' + wip(), css: {'wip-exceeded': tickets().length > wip()}">wip</span>
+                </div>
+                <ul class="card-list" data-bind="sortable: { data: tickets }">
+                    <li class="kanban-card" data-bind="click: $$root.selectTicket">
+                        <span class="id-label" data-bind="text: idString">id</span>
+                        <span data-bind="text: summary">summary</span>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div id="ticketDialog" data-bind="with: dialogTicket" style="display: none;">
+        <div>
+            <span data-bind="if: $$data.time" class="date-time">
+                <span data-bind="text: $$root.fieldLabel('time')">time</span>
+                <span data-bind="readableDate: time">time</span>
+            </span>
+            <span data-bind="if: $$data.changetime" class="float-right date-time">
+                <span data-bind="text: $$root.fieldLabel('changetime')">changetime</span>
+                <span data-bind="readableDate: changetime">changetime</span>
+            </span>
+        </div>
+        <div class="summary-container">
+            <input type="text" class="dialog-summary-input" data-bind="value: summary, enable: IS_EDITABLE" />
+        </div>
+        <table class="field-table">&nbsp;</table>
+        <div class="section-container" data-bind="if: typeof $$data.description !== 'undefined'">
+            <div class="section-title" data-bind="click: $$root.toggleSection">
+                Description
+                <span class="float-right ui-icon ui-icon-triangle-1-s">v</span>
+            </div>
+            <div class="section-content">
+                <textarea class="description-area" data-bind="value: description, enable: IS_EDITABLE">&nbsp;</textarea>
+            </div>
+        </div>
+        <div class="section-container" data-bind="if: $$data.changelog">
+            <div class="section-title" data-bind="click: $$root.toggleSection">
+                Change history
+                <span class="float-right ui-icon ui-icon-triangle-1-s">v</span>
+            </div>
+            <div class="section-content hidden">
+                <ul class="log-list" data-bind="foreach: changelog">
+                    <li>
+                        <div class="log-header">
+                            <span class="date-time" data-bind="readableDate: time">&nbsp;</span>
+                            <span class="date-time">by</span>
+                            <span class="date-time" data-bind="text: author">&nbsp;</span>
+                        </div>
+                        <div class="log-changes" data-bind="changelogEntry: changes">&nbsp;</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="section-container" data-bind="if: $$data.id, visible: IS_EDITABLE">
+            <div class="section-title" data-bind="click: $$root.toggleSection">
+                Comment
+                <span class="float-right ui-icon ui-icon-triangle-1-s">v</span>
+            </div>
+            <div class="section-content comment-content">
+                <textarea class="comment-area" data-bind="value: comment">&nbsp;</textarea>
+            </div>
+        </div>
+    </div>
+    <div id="queryDialog" style="display: none;">
+        <iframe id="queryFrame" src="">query</iframe>
+    </div>
+</div>

@@ -1,0 +1,219 @@
+.date-time
+{
+    color: #666;
+    font-size: 0.9em;
+    font-style: italic;
+}
+
+.float-right
+{
+    float: right;
+}
+
+.hidden
+{
+    display: none;
+}
+
+
+/*
+ * Columns
+ */
+.kanban-column-container
+{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0.5em 0 0 0;
+}
+
+.kanban-column-container li.kanban-column
+{
+    display: inline-block;
+    float: left;
+    text-align: center;
+    height: 100%;
+    background-color: #f6f6f6;
+}
+
+.kanban-column-container li.kanban-column:nth-child(odd)
+{
+    background-color: #eee;
+}
+
+.kanban-column-container li.kanban-column .column-header
+{
+    padding-top: 0.5em;
+}
+
+.kanban-column-container li.kanban-column .column-header .wip-exceeded
+{
+    color: #cd0a0a;
+}
+
+
+/*
+ * Cards
+ */
+ul.card-list
+{
+    list-style: none;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+li.kanban-card
+{
+    background-color: #fff7ae;
+    border: 1px solid #bfb983;
+    margin: 0.5em;
+    padding: 0.5em;
+    text-align: left;
+    border-radius: 3px;
+    box-shadow: 1px 3px 10px 0px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+
+.kanban-card-placeholder
+{
+    background-color: rgba(0, 0, 0, 0.1);
+    margin: 0.5em;
+    border: 1px dashed #888888;
+    border-radius: 0.2em;
+}
+
+li.kanban-card .id-label
+{
+    color: #cd0a0a;
+}
+
+
+/*
+ * Ticket details dialog
+ */
+#ticketDialog input,
+#ticketDialog textarea,
+#ticketDialog select
+{
+    width: 100%;
+    margin: 0;
+    padding: 3px 4px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+#ticketDialog .summary-container
+{
+    padding-top: 1em;
+}
+
+#ticketDialog .dialog-summary-input
+{
+    margin: 0;
+}
+
+#ticketDialog .field-table
+{
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 3px;
+}
+
+#ticketDialog .field-table td:nth-child(odd)
+{
+    color: #777777;
+    text-align: right;
+    vertical-align: middle;
+    padding-right: 0.3em;
+}
+
+#ticketDialog .description-area
+{
+    height: 10em;
+}
+
+#ticketDialog .comment-area
+{
+    height: 5em;
+}
+
+#ticketDialog .section-title
+{
+    cursor: pointer;
+    font-size: 1em;
+    color: #777777;
+    margin-top: 1em;
+    padding: 0.3em;
+    background-color: #eeeeee;
+}
+
+#ticketDialog .section-title:hover
+{
+    background-color: #dddddd;
+}
+
+#ticketDialog .log-list
+{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    max-height: 20em;
+    overflow: auto;
+}
+
+#ticketDialog .log-list li
+{
+    padding-top: 0.5em;
+}
+
+#ticketDialog .log-list .log-changes
+{
+    padding-left: 1em;
+}
+
+#ticketDialog .log-list .log-field
+{
+    font-weight: bold;
+}
+
+#ticketDialog .log-list .log-value
+{
+    font-style: italic;
+}
+
+/*
+ * Ticket adding/query dialog
+ */
+#queryDialog
+{
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+#queryFrame
+{
+    width: 100%;
+    height: 100%;
+    border-width: 0;
+}
+
+
+/*
+ * Error page
+ */
+.error-container
+{
+    border: 1px solid #aaaaaa;
+    padding: 0.5em;
+    border-radius: 0.2em;
+}
+
+.macro-error
+{
+    font-size: 1.5em;
+    color: #cd0a0a;
+}
